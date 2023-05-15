@@ -1,2 +1,2 @@
 # RealTimeBusTracker
-Tracked path of Bus ...
+Tracked path of MTA busses in NYC. 
