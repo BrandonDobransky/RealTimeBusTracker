@@ -64,24 +64,3 @@ var marker = new mapboxgl.Marker()
             counter++;
             run();
         }, 1500);
-    }
-
-async function run(){
-    // get bus data    
-	const locations = await getBusLocations();
-	console.log(new Date());
-	console.log(locations);
-
-	// timer
-	setTimeout(run, 30000);
-}
-
-// Request bus data from MBTA
-async function getBusLocations(){
-	const url = 'm1 route api??!!??';
-	const response = await fetch(url);
-	const json = await response.json();
-	return json.data;
-}
-
-run();
