@@ -10,7 +10,31 @@
 </head>
 <body>
     <div id="map"> </div>
+    <div class="map-overlay top">
+        <button style="font-size: 2em;" onclick="run()">
+            Stops for M1 Bus Line
+        </button>
+    </div>
     <script src='./Sharedmapanimation.js'> 
+
+async function run(){
+    // get bus data    
+	const locations = await getBusLocations();
+	console.log(new Date());
+	console.log(locations);
+
+	// timer
+	setTimeout(run, 20000);
+}
+
+    // Request bus data from MTA
+async function getBusLocations(){
+	const url = 'https://bustime.mta.info/api/where/stops-for-route/MTA%20NYCT_M1.json?key=YOUR_API_KEY&includePolylines=false&version=2';
+	const response = await fetch(url);
+	const json     = await response.json();
+	return json.data;
+}
+run();
     </script>
 </body>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
